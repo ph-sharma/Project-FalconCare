@@ -1,5 +1,5 @@
 //Title:FalconCare
-   It is a  CHOLESTEROL RECOMMENDATION SYSTEM. 
+   It is a  CHOLESTEROL CURE RECOMMENDATION SYSTEM. 
 //Description:
    It is developed to provide patients/users to get expert recommendations after uploading or inserting report values of their lipid profile,
    which  will  help them control their cholesterol levels and prevent them from diseases like stroke, heart diseases,etc.
