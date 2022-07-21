@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Falcon Care</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="./assets/img/favicon.jpg" rel="icon">
+  <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="../../public/css/popup.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0px;
+    }
+
+    .popup {
+      position: fixed;
+      top: -100vh;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      transition: top 0ms ease-in-out 300ms;
+    }
+
+    .popup.active {
+      transition: top 0ms ease-in-out;
+      top: 0vh;
+    }
+
+    .popup .popup-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.2);
+      width: 400px;
+      padding: 30px 20px 20px;
+      background: #eee;
+      opacity: 0.5;
+      transition: all 300ms ease-in-out;
+    }
+
+    .popup.active .popup-container {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup .popup-container .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background: #111;
+      text-align: center;
+      line-height: 30px;
+      color: #eee;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .popup .popup-container h1 {
+      text-align: center;
+      font-size: 30px;
+      font-family: "Raleway";
+      color: #222;
+    }
+
+    .popup .popup-container p {
+      margin-top: 10px;
+      font-size: 15px;
+      font-family: "Raleway";
+      color: #555;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo"><img src="../img/logo.png" alt="" class="img-fluid">Falcon Care</a>
+      <!-- Uncomment below if you prefer to use text as a logo -->
+      <!-- .navbar -->
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <ul>
+          <!-- <i class="bi bi-list mobile-nav-toggle"> -->
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="/consult">Consult</a></li>
+          <li><a class="nav-link scrollto" href="/reports">Reports</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item button " id="open-popup" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <%- include("../partials/userprofile.ejs",{name:name,age:age,email:email,phn:phn,createdAt:createdAt}) %>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1>Access to Medical Assistance with no Boundaries</h1>
+            <h2>A web based web Application for Remote Healthcare and medical advice</h2>
+            <div><a href="/consult" class="btn-get-started scrollto">Get Started</a></div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="./assets/img/hero-img.png" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about">
+        <div class="container">
+
+          <div class="row">
+          </div>
+
+          <div
+            class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Health at Your Fingertips, Anywhere, Anytime.</h3>
+            <p>Track many lised foods & exercises. Receive real-time insights & automated analytics on your health.
+              Access
+              expert advice from our top coaches.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Health at Your Fingertips</a></h4>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-box"></i></div>
+              <h4 class="title"><a href="">Check Previous Reports</a></h4>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <h4 class="title"><a href="">Get Suggestions from Health Experts</a></h4>
+            </div>
+
+          </div>
+        </div>
+
+        </div>
+      </section><!-- End About Section -->
+
+      <!-- ======= Counts Section ======= -->
+      <section id="counts" class="counts">
+        <div class="container">
+
+          <div class="text-center title">
+            <h3>What we have achieved so far</h3>
+          </div>
+
+          <div class="row counters position-relative">
+
+            <div class="col-lg-3 col-6 text-center">
+              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Clients</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+              <span data-purecounter-start="0" data-purecounter-end="60" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Improvements</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Hard Workers</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Counts Section -->
+
+      <!-- ======= Clients Section ======= -->
+      <section id="clients" class="clients">
+        <div class="container">
+          <h1>Experts Background</h1>
+
+          <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/c1.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/client-2.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/c2.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/client-4.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/c3.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/client-6.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/client-7.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="client-logo">
+                <img src="./assets/img/clients/client-8.png" class="img-fluid" alt="">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Clients Section -->
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg">
+        <div class="container">
+
+          <div class="section-title">
+            <h2>Services</h2>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-cash-stack" style="color: #ff689b;"></i></div>
+                <h4 class="title"><a href="/consult">New Consultion</a></h4>
+                <p class="description">Upload Report and Submit your details to get Suggestions from Our Health Experts
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-calendar4-week" style="color: #e9bf06;"></i></div>
+                <h4 class="title"><a href="/reports">Veiw Reports</a></h4>
+                <p class="description">Veiw Previous Consulted Data</p>
+              </div>
+            </div>
+
+
+          </div>
+      </section><!-- End Services Section -->
+
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container">
+
+          <div class="section-title">
+            <h2>Contact</h2>
+          </div>
+
+          <div>
+            <iframe style="border:0; width: 100%; height: 270px;"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.523704880885!2d77.16115651508153!3d28.58406188243693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d11d46ccc85%3A0x2e94d9687f938329!2sInstitute%20of%20Informatics%20and%20Communication%2C%20UDSC!5e0!3m2!1sen!2sin!4v1650307660854!5m2!1sen!2sin"
+              frameborder="0" allowfullscreen></iframe>
+          </div>
+
+          <div class="row mt-5">
+
+            <div class="col-lg-4">
+              <div class="info">
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4>Location:</h4>
+                  <p>IIC UDSC, Delhi</p>
+                </div>
+
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>info@falcon.com</p>
+                </div>
+
+                <div class="phone">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+91 5589 55488</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+              <form action="/userhome" method="post">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="cname" class="form-control" id="cname" placeholder="Your Name" value="<%= name %>" required>
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="cemail" id="cemail" value="<%= email %>" placeholder="Your Email"
+                      required>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" id="message" placeholder="Message"
+                    required></textarea>
+                </div>
+               
+                <input type="submit" name="register" class="form-submit text-center btn btn-primary"
+                  value="Send Message" />
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Falcon Care</h3>
+              <p>
+                IIC, UDSC <br>
+                South Campus Moti Bagh<br>
+                Delhi, India <br><br>
+                <strong>Phone:</strong> +91 5589 55488<br>
+                <strong>Email:</strong> info@efalcon.com<br>
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Social Networks</h4>
+              <p>Connect with us form more news and updates</p>
+              <div class="social-links mt-3">
+                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://in.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container py-4">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Falcon Care</span></strong>. All Rights Reserved
+        </div>
+        
+      </div>
+    </footer><!-- End Footer -->
+
+    <!-- Sticky Arrow -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="../../assets/vendor/purecounter/purecounter.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../../assets/vendor/php-email-form/validate.js"></script>
+    <script src="../../assets/vendor/php-email-form/validate.js"></script>
+    <script src="../../public/js/main.js"></script>
+
+    <!-- Template Main JS File -->
+    <!-- <script src="../../assets/js/main.js"></script>
+  <script src="../src/app.js"></script>
+    <script src="../src/app.js"></script> -->
+</body>
+
+</html>

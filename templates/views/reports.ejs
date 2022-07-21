@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Falcon Care | Consult</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="./assets/img/favicon.jpg" rel="icon">
+  <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="../../public/css/popup.css">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0px;
+    }
+    section{
+      margin: 20px;
+    }
+
+    .popup {
+      position: fixed;
+      top: -100vh;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      transition: top 0ms ease-in-out 300ms;
+    }
+
+    .popup.active {
+      transition: top 0ms ease-in-out;
+      top: 0vh;
+    }
+
+    .popup .popup-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.2);
+      width: 400px;
+      padding: 30px 20px 20px;
+      background: #eee;
+      opacity: 0.5;
+      transition: all 300ms ease-in-out;
+    }
+
+    .popup.active .popup-container {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup .popup-container .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background: #111;
+      text-align: center;
+      line-height: 30px;
+      color: #eee;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .popup .popup-container h1 {
+      text-align: center;
+      font-size: 30px;
+      font-family: "Raleway";
+      color: #222;
+    }
+
+    .popup .popup-container p {
+      margin-top: 10px;
+      font-size: 15px;
+      font-family: "Raleway";
+      color: #555;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo"><img src="../img/logo.png" alt="" class="img-fluid">Falcon Care</a>
+      <!-- Uncomment below if you prefer to use text as a logo -->
+      <!-- .navbar -->
+      <nav id="navbar navbar-expand-lg" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/userhome#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="/consult">Consult</a></li>
+          <li><a class="nav-link scrollto  active" href="/reports">Reports</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#contact">Contact</a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item button " id="open-popup" type="button" data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <%- include("../partials/userprofile.ejs",{name:name,age:age,email:email,phn:phn}) %>
+
+
+    <!-- ======= Hero Section ======= -->
+
+
+    <main id="main">
+
+      <!-- ======= About Section ======= -->
+      <br>
+      <br>
+      <br>
+
+
+
+
+
+
+
+      <!-- ======= Consult Section ======= -->
+      <section id="reports" class="section-bg">
+        <h1>Previous Report Details</h1>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+
+              <th scope="col">Consulted on</th>
+              <th scope="col">Cholesterol Total</th>
+              <th scope="col">Triglycerides</th>
+              <th scope="col">HDL Cholesterol</th>
+              <th scope="col">LDL Cholesterol</th>
+              <th scope="col">VLDL Cholesterol</th>
+              <th scope="col">Non-HDL Cholesterol</th>
+              <th scope="col">Suggestions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% usersList.forEach(i => {%>
+              <% i.reports.forEach(j => {%>
+              
+              <tr>
+                <td>
+                  <%= Date(j.createdAt) %>
+                </td><td>
+                  <%= j.ct %>
+                </td>
+                <td>
+                  <%= j.tri %>
+                </td>
+                <td>
+                  <%= j.hdl %>
+                </td>
+                <td>
+                  <%= j.ldl %>
+                </td>
+                <td>
+                  <%= j.vldl %>
+                </td>
+                <td>
+                  <%= j.nhdl %>
+                </td>
+                <td>
+                  <%= j.sugg %>
+                </td>
+
+              </tr>
+              <%})%>
+              <%})%>
+          </tbody>
+        </table>
+
+      </section><!-- End New Consultation Section -->
+
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>Falcon Care</h3>
+              <p>
+                IIC, UDSC <br>
+                South Campus Moti Bagh<br>
+                Delhi, India <br><br>
+                <strong>Phone:</strong> +91 5589 55488<br>
+                <strong>Email:</strong> info@efalcon.com<br>
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Social Networks</h4>
+              <p>Connect with us form more news and updates</p>
+              <div class="social-links mt-3">
+                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://in.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container py-4">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Falcon Care</span></strong>. All Rights Reserved
+        </div>
+        
+      </div>
+    </footer><!-- End Footer -->
+
+    <!-- Sticky Arrow -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="./assets/vendor/purecounter/purecounter.js"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="./assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="./assets/vendor/php-email-form/validate.js"></script>
+    <script src="../../public/js/main.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="./assets/js/main.js"></script>
+    <script src="../src/app.js"></script>
+    <script>
+      const inpFile = document.getElementById("inpFile");
+      const btnUpload = document.getElementById("btnUpload");
+      const resultText = document.getElementById("resultText");
+
+      btnUpload.addEventListener("click", () => {
+        const formData = new FormData();
+
+        formData.append("pdfFile", inpFile.files[0]);
+
+        fetch("/extract-text", {
+          method: "post",
+          body: formData
+        }).then(response => {
+          return response.text();
+        }).then(extractedText => {
+          console.log(extractedText)
+          resultText1.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[0];
+          resultText2.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[1];
+          resultText3.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[2];
+          resultText4.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[4];
+          resultText5.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[5];
+          resultText6.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[6];
+        });
+      });
+    </script>
+
+    <script src="../src/app.js"></script>
+</body>
+
+</html>

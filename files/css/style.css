@@ -1,0 +1,65 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.home-container{
+    
+  overflow: hidden;
+  position: relative;
+    width: 100vw;
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: row; */
+    justify-content: center ;
+    align-items: center;
+}
+#home-background{
+    background:url("../img/home_background.jpg" );
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  background-size: 1500px 1000px;
+  z-index: -1;
+}
+#home-logo{
+    border-radius: 200px;
+    height: 100px;
+}
+.home-heading{
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    opacity: 1;
+    font-size: 80px;
+    z-index: 1;
+    text-align: center;
+}
+.home-card{
+    height: 180px;
+    width: 500px;
+    /* opacity: 0.6; */
+    position: relative;
+    background-color: #05595B;
+    color: black;
+    transition-property: background-color;
+    transition-duration: 2s;
+    border-radius: 10px;
+}
+#home-background{
+    opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+.card:hover{
+    perspective: 1000px;
+    transition: width 2s, height 4s;
+    background-color: #051367;
+    color: white;
+    opacity: 1;
+}
+
+/* Doctor Siggn in */
+

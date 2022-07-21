@@ -1,0 +1,58 @@
+* {
+  margin:0px;
+}
+.popup {
+  position:fixed;
+  top:-100vh;
+  left:0px;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  transition:top 0ms ease-in-out 300ms;
+}
+.popup.active {
+  transition:top 0ms ease-in-out;
+  top:0vh;
+}
+.popup .popup-container {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(1.2);
+  width:400px;
+  padding:30px 20px 20px;
+  background:#eee;
+  opacity:0.5;
+  transition:all 300ms ease-in-out;
+}
+.popup.active .popup-container {
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+.popup .popup-container .popup-close {
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  background:#111;
+  text-align:center;
+  line-height:30px;
+  color:#eee;
+  border-radius:50%;
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+}
+.popup .popup-container h1 {
+  text-align:center;
+  font-size:30px;
+  font-family:"Raleway";
+  color:#222;
+}
+.popup .popup-container p {
+  margin-top:10px;
+  font-size:15px;
+  font-family:"Raleway";
+  color:#555;
+}

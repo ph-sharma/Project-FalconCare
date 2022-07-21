@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="./csslogin/style.css">
+    <link rel="stylesheet" href="../../csslogin/style.css">
+    <style>
+        body{
+            background-color: #2c3338;
+        }
+        .main{
+        background-color: #2c3338;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form action="/register" method="POST" class="register-form" id="register-form" onSubmit = "return checkPassword(this)">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="name" id="name" placeholder="Your Name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="age"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="number" name="age" id="age" placeholder="Your Age" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phn"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="tel" name="phn" id="phn" placeholder="Your Mobile Number" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmpass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="confirmpass" id="confirmpass" placeholder="Repeat your password"/>
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <input type="submit" name="register" id="register" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="../img/signuppage.png" alt="sign up image"></figure>
+                        <a href="/userlogin" class="signup-image-link"><h3>Already Registered</h3></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+          
+        // Function to check Whether both passwords
+        // is same or not.
+        function checkPassword(form) {
+            password1 = form.pass.value;
+                password2 = form.confirmpass.value;
+
+            // If password not entered
+            if (password1 == '')
+                alert ("Please enter Password");
+                  
+            // If confirm password not entered
+            else if (password2 == '')
+                alert ("Please enter confirm password");
+                  
+            // If Not same return False.    
+            else if (password1 != password2) {
+                alert ("\nPassword did not match: Please try again...")
+                return false;
+            }
+
+            // If same return True.
+            else{
+                return true;
+            }
+        }
+    </script>
+</html>

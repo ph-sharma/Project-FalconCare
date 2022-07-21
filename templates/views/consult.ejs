@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Falcon Care | Consult</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="./assets/img/favicon.jpg" rel="icon">
+  <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="../../public/css/popup.css">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+<style>
+  * {
+  margin:0px;
+}
+.popup {
+  position:fixed;
+  top:-100vh;
+  left:0px;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  transition:top 0ms ease-in-out 300ms;
+}
+.popup.active {
+  transition:top 0ms ease-in-out;
+  top:0vh;
+}
+.popup .popup-container {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(1.2);
+  width:400px;
+  padding:30px 20px 20px;
+  background:#eee;
+  opacity:0.5;
+  transition:all 300ms ease-in-out;
+}
+.popup.active .popup-container {
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+.popup .popup-container .popup-close {
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:30px;
+  height:30px;
+  background:#111;
+  text-align:center;
+  line-height:30px;
+  color:#eee;
+  border-radius:50%;
+  font-size:20px;
+  font-weight:600;
+  cursor:pointer;
+}
+.popup .popup-container h1 {
+  text-align:center;
+  font-size:30px;
+  font-family:"Raleway";
+  color:#222;
+}
+.popup .popup-container p {
+  margin-top:10px;
+  font-size:15px;
+  font-family:"Raleway";
+  color:#555;
+}
+.result{
+  margin: 20px;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .result {
+    visibility: visible;
+  }
+  .result {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo"><img src="../img/logo.png" alt="" class="img-fluid">Falcon Care</a>
+      <!-- Uncomment below if you prefer to use text as a logo -->
+      <!-- .navbar -->
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <ul>
+          <!-- <i class="bi bi-list mobile-nav-toggle"> -->
+          <li><a class="nav-link scrollto" href="/userhome#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="/consult">Consult</a></li>
+          <li><a class="nav-link scrollto" href="/reports">Reports</a></li>
+          <li><a class="nav-link scrollto" href="/userhome#contact">Contact</a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item button " id="open-popup" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  
+  <%- include("../partials/userprofile.ejs",{name:name,age:age,email:email,phn:phn}) %>
+
+
+
+  <!-- ======= Hero Section ======= -->
+
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <br>
+    <br>
+    <br>
+    
+
+    
+
+    
+
+
+    <!-- ======= Consult Section ======= -->
+  <section id="consult" class="consult section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>New Consultation</h2>
+          <h1>LIPID PROFILE, BASIC, SERUM**</h1>
+        </div>
+        <h2><label for="formFileLg" class="form-label">Upload Report File ::</label></h2>
+        <div style="display: flex; justify-content: center;">
+          <input style="width: 50%; display: inline-block;" class="form-control form-control-lg" id="inpFile"
+            type="file">
+          <button style="display: inline-block;" type="button" class="btn btn-primary" id="btnUpload">Upload</button>
+        </div>
+
+
+
+        <br>
+        <br>
+        <h1>Enter your Report Details</h1>
+        <form action="/consult" method="post" class="form">
+          
+            <div class="mb-3">
+              <label for="ct" class="form-label">Cholesterol Total</label>
+              <input type="text" name="ct" class="form-control" id="ct" placeholder="(CHO-POD)">
+            </div>
+            <div class="mb-3">
+              <label for="tri" class="form-label">Triglycerides</label>
+              <input type="text" name="tri" class="form-control" id="tri" placeholder="(GHO-POD)">
+            </div>
+            <div class="mb-3">
+              <label for="hdl" class="form-label">HDL Cholesterol</label>
+              <input type="text" name="hdl" class="form-control" id="hdl" placeholder="(Enz Immunoinhibition)">
+            </div>
+            <div class="mb-3">
+              <label for="ldl" class="form-label">LDL Cholesterol,Direct</label>
+              <input type="text" name="ldl" class="form-control" id="ldl" placeholder="Enz Selective Protection">
+            </div>
+            <div class="mb-3">
+              <label for="vldl" class="form-label">VLDL Cholesterol</label>
+              <input type="text" name="vldl" class="form-control" id="vldl" placeholder="Calculated">
+            </div>
+            <div class="mb-3">
+              <label for="nhdl" class="form-label">Non-HDL Cholesterol</label>
+              <input type="text" name="nhdl" class="form-control" id="nhdl" placeholder="Calculated">
+            </div>
+            <div class="form-group form-button mb-3">
+              <input class="text-center btn-get-started btn btn-primary" type="submit" name="consultform" id="consult-btn" value="Submit"/>
+            </div>
+            <!-- <div class="text-center "><button class="btn-get-started btn btn-primary" type="submit"></button></div> -->
+          </form>
+        <!-- <div><a href="#consult" class="btn-get-started text-center">Get Started</a></div> -->
+
+
+      </div>
+    </section><!-- End New Consultation Section -->
+  
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Falcon Care</h3>
+            <p>
+              IIC, UDSC <br>
+              South Campus Moti Bagh<br>
+              Delhi, India <br><br>
+              <strong>Phone:</strong> +91 5589 55488<br>
+              <strong>Email:</strong> info@efalcon.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Connect with us form more news and updates</p>
+            <div class="social-links mt-3">
+              <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://in.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Falcon Care</span></strong>. All Rights Reserved
+      </div>
+      
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Sticky Arrow -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./assets/vendor/purecounter/purecounter.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="./assets/vendor/php-email-form/validate.js"></script>
+  <script src="../../public/js/main.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="./assets/js/main.js"></script>
+  <script src="../src/app.js"></script>
+  <script>
+    const inpFile = document.getElementById("inpFile");
+    const btnUpload = document.getElementById("btnUpload");
+    const resultText = document.getElementById("resultText");
+
+    btnUpload.addEventListener("click", () => {
+      const formData = new FormData();
+
+      formData.append("pdfFile", inpFile.files[0]);
+
+      fetch("/extract-text", {
+        method: "post",
+        body: formData
+      }).then(response => {
+        return response.text();
+      }).then(extractedText => {
+        // console.log(extractedText)
+        ct.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[0];
+        tri.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[1];
+        hdl.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[2];
+        ldl.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[4];
+        vldl.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[5];
+        nhdl.value = extractedText.trim().match(/[0-9]+\.+[0-9]+/g)[6];
+      });
+    });
+  </script>
+  <script>
+    function printDiv() {
+            var divContents = document.getElementById("GFG").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body >  <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+  </script>
+
+  <script src="../src/app.js"></script>
+</body>
+
+</html>
